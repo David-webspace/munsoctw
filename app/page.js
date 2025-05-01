@@ -1,6 +1,5 @@
 "use client";
 import Link from 'next/link';
-import events from '../data/events';
 import news from '../data/news';
 import previousEventsData from '../data/previousEvents';
 import Banner from '../components/Banner';
@@ -36,11 +35,91 @@ function HomepageHighlights() {
   );
 }
 
-export default function HomePage() {
+function NewsSection () {
+  return (
+    <section className="mb-14">
+      <SectionTitle>Latest News</SectionTitle>
+      <div className="grid gap-6 sm:grid-cols-2">
+        {news.map(item => (
+          <div key={item.id} className="rounded-xl bg-white shadow-md hover:shadow-lg transition flex flex-col overflow-hidden border border-blue-100">
+            <Link href={`/news/${item.id}`}>
+              <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+              <div className="p-4 flex-1 flex flex-col">
+                <h3 className="text-lg font-bold text-blue-800 mb-1">{item.title}</h3>
+                <p className="text-gray-400 text-xs mb-2">{item.date}</p>
+                <p className="text-gray-700 flex-1">{item.summary}</p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ComingEventSection ({comingEventsData}) {
+  return (
+    <section className="mb-14">
+    <SectionTitle>Coming Events</SectionTitle>
+    {comingEventsData.length === 0 ? (
+      <p className="text-gray-400">No upcoming events at the moment.</p>
+    ) : (
+      <div className="grid gap-8 sm:grid-cols-2">
+        {comingEventsData.map(event => (
+          <div key={event.id} className="cursor-pointer">
+            <Link href={`/events/${event.id}`}>
+              <div className="bg-white rounded-2xl shadow-md border border-gray-200 flex flex-col h-full hover:shadow-xl transition group overflow-hidden">
+                <div className="relative">
+                  <img src={event.img} alt={event.event} className="w-full h-48 object-cover" />
+                  {/* Type tag */}
+                  {event.type && (
+                    <span className={
+                      `absolute top-2 left-2 px-2 py-0.5 text-xs font-semibold rounded-full z-10 ` +
+                      (event.type === 'Briefing Session'
+                        ? 'bg-yellow-200 text-yellow-900 border border-yellow-300'
+                        : 'bg-blue-200 text-blue-800')
+                    }>
+                      {event.type}
+                    </span>
+                  )}
+                </div>
+                <div className="flex-1 flex flex-col p-4">
+                  <div className="flex items-center text-gray-500 text-xs mb-1">
+                    <span className="truncate">{event.location}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-blue-800 mb-1 group-hover:underline line-clamp-2 min-h-[2.5em]">{event.event}</h3>
+                  <p className="text-gray-400 text-xs mb-2">{event.time}</p>
+                  <p
+                    className="text-gray-700 text-sm mb-2 line-clamp-3 flex-1"
+                    style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 4,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxHeight: '6.5em',
+                      lineHeight: '1.6em',
+                    }}
+                    title={event.description}
+                  >
+                    {event.description}
+                  </p>
+                  <div className="mt-auto pt-2">
+                    <span className="inline-block text-blue-600 hover:underline font-semibold text-sm">View Details</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+  );
+}
+
+function PreviousEventSection ({previousEventsData}) {
   const [modalEvent, setModalEvent] = useState(null);
-  // Separate coming and previous events by date
-  const today = new Date().toISOString().split('T')[0];
-  const comingEvents = events.filter(e => e.date >= today);
 
   // Helper to parse event time for sorting
   function parseEventTime(event) {
@@ -58,57 +137,8 @@ export default function HomePage() {
       return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
     }
   }
-
   return (
-    <main className="max-w-6xl mx-auto p-6 sm:p-10">
-      <Banner />
-      <WorldMUNAnalysis />
-      <HomepageHighlights />
-      {/* News Section */}
-      <section className="mb-14">
-        <SectionTitle>Latest News</SectionTitle>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {news.map(item => (
-            <div key={item.id} className="rounded-xl bg-white shadow-md hover:shadow-lg transition flex flex-col overflow-hidden border border-blue-100">
-              <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
-              <div className="p-4 flex-1 flex flex-col">
-                <h3 className="text-lg font-bold text-blue-800 mb-1">{item.title}</h3>
-                <p className="text-gray-400 text-xs mb-2">{item.date}</p>
-                <p className="text-gray-700 flex-1">{item.summary}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      {/* Coming Events */}
-      <section className="mb-14">
-        <SectionTitle>Coming Events</SectionTitle>
-        {comingEvents.length === 0 ? (
-          <p className="text-gray-400">No upcoming events at the moment.</p>
-        ) : (
-          <div className="grid gap-8 sm:grid-cols-2">
-            {comingEvents.map(event => (
-              <div key={event.id} className="cursor-pointer">
-                <Link href={`/events/${event.id}`} className="block group">
-                  <div className="rounded-xl bg-gradient-to-br from-blue-100 to-white border border-blue-200 shadow hover:shadow-lg transition overflow-hidden flex flex-col group-hover:border-blue-400">
-                    <img src={event.image} alt={event.title} className="w-full h-40 object-cover" />
-                    <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold text-blue-900 mb-1 group-hover:underline">
-                        {event.title}
-                      </h3>
-                      <p className="text-blue-700 text-xs mb-2">{event.date} | {event.location}</p>
-                      <p className="text-gray-700 flex-1">{event.description}</p>
-                      <div className="inline-block mt-3 text-blue-600 hover:underline font-semibold">View Details</div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-      {/* Previous Events Review (detailed) */}
-      <section>
+    <section>
         <div className="flex items-center">
           <SectionTitle>Conferences</SectionTitle>
           {/* <Link href="/events#previous-events" className="ml-3 text-blue-600 hover:underline font-semibold text-base mb-2">View more conferences</Link> */}
@@ -182,6 +212,48 @@ export default function HomePage() {
           </div>
         )}
       </section>
+  )
+}
+
+export default function HomePage() {
+  // Separate coming and previous events by date
+  const today = new Date().toISOString().split('T')[0];
+  const comingEvents = previousEventsData.filter(e => e.date >= today)
+    .slice()
+    .sort((a, b) => parseEventTime(b) - parseEventTime(a))
+    .slice(0, 2);
+
+  // Helper to parse event time for sorting
+  function parseEventTime(event) {
+    // Try to parse YYYY/MM/DD, YYYY-MM-DD, or range like 03/10/2024-03/15/2024
+    const timeStr = event.time || event.date;
+    if (!timeStr) return 0;
+    // If range, take the first date
+    const firstDate = timeStr.split('-')[0].trim();
+    const parts = firstDate.includes('/') ? firstDate.split('/') : firstDate.split('-');
+    if (parts[0].length === 4) {
+      // YYYY/MM/DD or YYYY-MM-DD
+      return new Date(parts[0], parts[1] - 1, parts[2]).getTime();
+    } else {
+      // MM/DD/YYYY
+      return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+    }
+  }
+
+  return (
+    <main className="max-w-6xl mx-auto p-6 sm:p-10">
+      <Banner />
+      <WorldMUNAnalysis />
+      <HomepageHighlights />
+
+      {/* News Section */}
+      <NewsSection />
+
+      {/* Coming Events */}
+      <ComingEventSection comingEventsData={comingEvents} />
+
+      {/* Previous Events Review (detailed) */}
+      <PreviousEventSection previousEventsData={previousEventsData} />
     </main>
   );
 }

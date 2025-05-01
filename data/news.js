@@ -1,20 +1,20 @@
 // Example news data for the association website
 const news = [
   {
-    id: 'n1',
+    id: 'mun-society-taiwan-wins-national-award',
     title: 'MUN Society Taiwan Wins National Award',
     date: '2025-04-10',
-    summary: 'Our association has been recognized for outstanding contributions to youth leadership and diplomacy.',
-    image: 'https://source.unsplash.com/random/600x400?award,leadership',
-    details: 'MUN Society Taiwan received the National Youth Leadership Award for its commitment to fostering global citizenship.'
+    time: '2025/04/10',
+    description: 'Our association has been recognized for outstanding contributions to youth leadership and diplomacy.',
+    img: 'https://images.pexels.com/photos/301987/pexels-photo-301987.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
-    id: 'n2',
+    id: 'upcoming-workshop-debate-skills',
     title: 'Upcoming Workshop: Debate Skills',
     date: '2025-05-02',
-    summary: 'Join our workshop to enhance your debate and public speaking skills.',
-    image: 'https://source.unsplash.com/random/600x400?workshop,debate',
-    details: 'Open to all members. Register by April 30th.'
+    time: '2025/05/02',
+    description: 'Join our workshop to enhance your debate and public speaking skills.',
+    img: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1200',
   }
 ];
 
