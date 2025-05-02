@@ -1,5 +1,6 @@
 import news from '../../../data/news';
 import NewsDetailClient from './NewsDetailClient';
+import Link from 'next/link';
 
 export default function NewsDetailPage({ params }) {
   // Find the news item by id
@@ -9,7 +10,7 @@ export default function NewsDetailPage({ params }) {
     return (
       <main className="max-w-2xl mx-auto p-8">
         <h1 className="text-2xl font-bold text-red-700 mb-4">News Not Found</h1>
-        <a href="/news" className="text-blue-600 hover:underline">Back to News</a>
+        <Link href="/news" className="text-blue-600 hover:underline">Back to News</Link>
       </main>
     );
   }

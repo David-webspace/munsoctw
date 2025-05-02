@@ -1,5 +1,6 @@
 import { dynamicPreviousEvents, dynamicUpcomingEvents } from '../../../data/dynamicEvents';
 import EventDetailClient from './EventDetailClient';
+import Link from 'next/link';
 
 export default async function EventDetailPage({ params }) {
   const { id } = await params;
@@ -10,7 +11,7 @@ export default async function EventDetailPage({ params }) {
     return (
       <main className="max-w-2xl mx-auto p-8">
         <h1 className="text-2xl font-bold text-red-700 mb-4">Event Not Found</h1>
-        <a href="/events" className="text-blue-600 hover:underline">Back to Events</a>
+        <Link href="/events" className="text-blue-600 hover:underline">Back to Events</Link>
       </main>
     );
   }

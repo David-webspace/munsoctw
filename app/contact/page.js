@@ -5,7 +5,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 opacity-10 bg-[url('/events/spring-gala.jpg')] bg-cover bg-center pointer-events-none" />
         <div className="relative z-10 text-center">
           <h1 className="text-4xl font-extrabold text-white drop-shadow mb-2">Contact Us</h1>
-          <p className="text-lg text-blue-100 font-medium drop-shadow mb-4">We'd love to hear from you! Whether you have questions, suggestions, or want to get involved, reach out anytime.</p>
+          <p className="text-lg text-blue-100 font-medium drop-shadow mb-4">We&apos;d love to hear from you! Whether you have questions, suggestions, or want to get involved, reach out anytime.</p>
         </div>
       </div>
       <section className="bg-white rounded-xl border border-blue-100 shadow p-6 flex flex-col items-center">

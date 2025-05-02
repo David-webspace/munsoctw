@@ -28,7 +28,7 @@ export default function AboutPage() {
       <SectionTitle>Our Organizing Experiences</SectionTitle>
       <div className="mb-12 bg-white rounded-xl border border-blue-100 shadow p-6">
         <ul className="list-disc pl-6 space-y-3 text-gray-700">
-          <li>MST's core team members collectively hold over 150 instances of delegate roles, 100 chairing positions, and 50 experiences in organizing conferences. While MUN organizations both nationally and internationally are gradually recovering from the impact of the pandemic, our society has successfully organized several in-person conferences.</li>
+          <li>MST&apos;s core team members collectively hold over 150 instances of delegate roles, 100 chairing positions, and 50 experiences in organizing conferences. While MUN organizations both nationally and internationally are gradually recovering from the impact of the pandemic, our society has successfully organized several in-person conferences.</li>
           <li>To foster local community connections, we organized a spring training program that brought together the top 100 high school MUN club members, creating an irreplaceable networking platform for them. In order to validate our benchmark position, we independently hosted Re_MUN, inviting the most seasoned MUN delegates to demonstrate exemplary MUN practices.</li>
           <li>Furthermore, these accomplishments enabled us to form a delegation and participate in the Harvard WorldMUN Conference in Paris, thus serving as a catalyst for this bidding opportunity.</li>
         </ul>

@@ -16,18 +16,18 @@ export default function Header() {
           <div className="relative group">
             <Link href="/about" className="mx-2 inline-block" style={{ color: 'var(--accent)' }}>About</Link>
             <div className="absolute left-0 top-full mt-1 hidden group-hover:flex flex-col border border-blue-100 rounded shadow z-50 min-w-[220px] w-56 bg-white">
-              <a href="/about#what-is-mun" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>What is MUN</a>
-              <a href="/about#what-we-do" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>What We Do</a>
-              <a href="/about#meet-the-team" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Meet the Team</a>
+              <Link href="/about#what-is-mun" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>What is MUN</Link>
+              <Link href="/about#what-we-do" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>What We Do</Link>
+              <Link href="/about#meet-the-team" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Meet the Team</Link>
             </div>
           </div>
           <Link href="/news" className="mx-2" style={{ color: 'var(--accent)' }}>News</Link>
           <div className="relative group">
             <Link href="/events" className="mx-2 inline-block" style={{ color: 'var(--accent)' }}>Events</Link>
             <div className="absolute left-0 top-full mt-1 hidden group-hover:flex flex-col border border-blue-100 rounded shadow z-50 min-w-[220px] w-56 bg-white">
-              <a href="/events/experiences" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Our Organization Experiences</a>
-              <a href="/events/upcoming" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Upcoming Events</a>
-              <a href="/events/reviews" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Previous Event Reviews</a>
+              <Link href="/events/experiences" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Our Organization Experiences</Link>
+              <Link href="/events/upcoming" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Upcoming Events</Link>
+              <Link href="/events/reviews" className="px-4 py-2 hover:bg-blue-50" style={{ color: 'var(--primary)' }}>Previous Event Reviews</Link>
             </div>
           </div>
           <Link href="/contact" className="mx-2" style={{ color: 'var(--accent)' }}>Contact</Link>
