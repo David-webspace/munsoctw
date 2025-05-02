@@ -6,7 +6,7 @@ const news = [
     date: '2025-04-10',
     time: '2025/04/10',
     description: 'Our association has been recognized for outstanding contributions to youth leadership and diplomacy.',
-    img: 'https://images.pexels.com/photos/301987/pexels-photo-301987.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    img: 'https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1200',
   },
   {
     id: 'upcoming-workshop-debate-skills',

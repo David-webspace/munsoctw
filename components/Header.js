@@ -3,9 +3,15 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="shadow p-4 z-40 relative" style={{ background: 'var(--primary)' }}>
+    <header className="shadow p-0 z-40 relative" style={{ background: 'var(--primary)' }}>
       <div className="max-w-5xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold" style={{ color: 'var(--accent)' }}>MUN Society Taiwan</Link>
+        <Link href="/" className="text-xl font-bold" style={{ color: 'var(--accent)' }}>
+          <img
+            src="https://live.staticflickr.com/65535/54016266739_ec8b1260ed_h.jpg"
+            alt="MUN Society Taiwan Logo"
+            // className="h-20"
+            style={{maxWidth: '240px', height: '100px', border: 'none', borderRadius: 0, objectFit: 'contain'}} />
+        </Link>
         <nav className="flex items-center gap-2">
           <div className="relative group">
             <Link href="/about" className="mx-2 inline-block" style={{ color: 'var(--accent)' }}>About</Link>

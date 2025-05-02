@@ -1,12 +1,12 @@
 "use client";
+import { useState } from 'react';
 import Link from 'next/link';
+import { FaMapMarkerAlt, FaCalendarAlt, FaCoins, FaCertificate } from "react-icons/fa";
 import news from '../data/news';
 import previousEventsData from '../data/previousEvents';
-import Banner from '../components/Banner';
 import WorldMUNAnalysis from '../components/WorldMUNAnalysis';
-import { useState } from 'react';
 
-function SectionTitle({ children }) {
+function SectionTitle ({ children }) {
   return (
     <h2 className="text-3xl font-extrabold text-blue-700 mb-6 tracking-tight flex items-center gap-3">
       <span className="inline-block w-1 h-7 bg-blue-500 rounded-full mr-2" />
@@ -15,7 +15,19 @@ function SectionTitle({ children }) {
   );
 }
 
-function HomepageHighlights() {
+function Banner (){
+  return (
+    <section className="relative bg-gradient-to-r from-blue-600 to-blue-300 py-14 px-6 rounded-2xl mb-12 shadow-lg overflow-hidden flex flex-col items-center justify-center">
+      <div className="absolute inset-0 opacity-20 bg-[url('/events/spring-gala.jpg')] bg-cover bg-center pointer-events-none" />
+      <div className="relative z-10 text-center">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-white drop-shadow mb-3">Welcome to MUN Society Taiwan</h2>
+        <p className="text-lg sm:text-2xl text-blue-100 font-medium drop-shadow">Not in the UN. MUNing anyways.s</p>
+      </div>
+    </section>
+  );
+}
+
+function HomepageHighlights () {
   return (
     <section className="max-w-5xl mx-auto my-12">
       <div className="">
@@ -43,11 +55,11 @@ function NewsSection () {
         {news.map(item => (
           <div key={item.id} className="rounded-xl bg-white shadow-md hover:shadow-lg transition flex flex-col overflow-hidden border border-blue-100">
             <Link href={`/news/${item.id}`}>
-              <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+              <img src={item.img} alt={item.title} className="w-full h-40 object-cover" />
               <div className="p-4 flex-1 flex flex-col">
                 <h3 className="text-lg font-bold text-blue-800 mb-1">{item.title}</h3>
                 <p className="text-gray-400 text-xs mb-2">{item.date}</p>
-                <p className="text-gray-700 flex-1">{item.summary}</p>
+                <p className="text-gray-700 flex-1">{item.description}</p>
               </div>
             </Link>
           </div>
@@ -84,11 +96,23 @@ function ComingEventSection ({comingEventsData}) {
                   )}
                 </div>
                 <div className="flex-1 flex flex-col p-4">
-                  <div className="flex items-center text-gray-500 text-xs mb-1">
+                  <h3 className="text-base font-bold text-blue-800 mb-3 group-hover:underline line-clamp-2 min-h-[2.5em]">{event.event}</h3>
+                  <div className="flex items-center text-gray-500 text-xs mb-2">
+                    <FaMapMarkerAlt className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="truncate">{event.location}</span>
                   </div>
-                  <h3 className="text-base font-bold text-blue-800 mb-1 group-hover:underline line-clamp-2 min-h-[2.5em]">{event.event}</h3>
-                  <p className="text-gray-400 text-xs mb-2">{event.time}</p>
+                  <div className="flex items-center text-gray-500 text-xs mb-3">
+                    <FaCalendarAlt className="w-4 text-gray-500 mr-3" />
+                    <span className="truncate">{event.time}</span>
+                  </div>
+                  <div className="flex items-center text-gray-500 text-xs mb-3">
+                    <FaCoins className="w-4 text-gray-500 mr-3" />
+                    <span className="truncate">{event.fee}</span>
+                  </div>
+                  <div className="flex items-center text-gray-500 text-xs mb-3">
+                    <FaCertificate className="w-4 text-gray-500 mr-3" />
+                    <span className="truncate">{event.qualification}</span>
+                  </div>
                   <p
                     className="text-gray-700 text-sm mb-2 line-clamp-3 flex-1"
                     style={{
@@ -166,11 +190,15 @@ function PreviousEventSection ({previousEventsData}) {
                   )}
                 </div>
                 <div className="flex-1 flex flex-col p-4">
-                  <div className="flex items-center text-gray-500 text-xs mb-1">
-                    <span className="truncate">{event.location}</span>
+                  <h3 className="text-base font-bold text-blue-800 mb-3 group-hover:underline line-clamp-2 min-h-[2.5em]">{event.event}</h3>
+                  <div className="flex items-center text-gray-500 text-xs mb-2">
+                      <FaMapMarkerAlt className="h-4 w-4 text-gray-500 mr-3" />
+                      <span className="truncate">{event.location}</span>
                   </div>
-                  <h3 className="text-base font-bold text-blue-800 mb-1 group-hover:underline line-clamp-2 min-h-[2.5em]">{event.event}</h3>
-                  <p className="text-gray-400 text-xs mb-2">{event.time}</p>
+                  <div className="flex items-center text-gray-500 text-xs mb-3">
+                    <FaCalendarAlt className="w-4 text-gray-500 mr-3" />
+                    <span className="truncate">{event.time}</span>
+                  </div>
                   <p
                     className="text-gray-700 text-sm mb-2 line-clamp-3 flex-1"
                     style={{
@@ -215,7 +243,7 @@ function PreviousEventSection ({previousEventsData}) {
   )
 }
 
-export default function HomePage() {
+export default function HomePage () {
   // Separate coming and previous events by date
   const today = new Date().toISOString().split('T')[0];
   const comingEvents = previousEventsData.filter(e => e.date >= today)

@@ -1,9 +1,10 @@
 import { dynamicPreviousEvents, dynamicUpcomingEvents } from '../../../data/dynamicEvents';
 import EventDetailClient from './EventDetailClient';
 
-export default function EventDetailPage({ params }) {
+export default async function EventDetailPage({ params }) {
+  const { id } = await params;
   // Find event in both previous and upcoming events
-  const event = dynamicPreviousEvents.find(e => e.id === params.id) || dynamicUpcomingEvents.find(e => e.id === params.id);
+  const event = dynamicPreviousEvents.find(e => e.id === id) || dynamicUpcomingEvents.find(e => e.id === id);
 
   if (!event) {
     return (
@@ -19,7 +20,7 @@ export default function EventDetailPage({ params }) {
 
   // Gather other events for "You Can Also Check Out..." and add isUpcoming flag
   const otherEvents = [...dynamicPreviousEvents, ...dynamicUpcomingEvents]
-    .filter(e => e.id !== params.id)
+    .filter(e => e.id !== id)
     .map(e => ({
       ...e,
       isUpcoming: upcomingIds.has(e.id)

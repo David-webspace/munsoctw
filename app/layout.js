@@ -7,6 +7,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Association Events</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.svg" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
       </head>
       <body className="bg-gray-50 min-h-screen flex flex-col">

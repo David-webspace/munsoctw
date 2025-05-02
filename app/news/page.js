@@ -9,7 +9,7 @@ export default function NewsPage() {
         {news.map(item => (
           <div key={item.id} className="rounded-xl bg-white shadow-md hover:shadow-lg transition flex flex-col overflow-hidden border border-blue-100">
             <Link href={`/news/${item.id}`}>
-              <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+              <img src={item.img} alt={item.title} className="w-full h-40 object-cover" />
               <div className="p-4 flex-1 flex flex-col">
                 <h2 className="text-lg font-bold text-blue-800 mb-1">{item.title}</h2>
                 <p className="text-gray-400 text-xs mb-2">{item.date}</p>
