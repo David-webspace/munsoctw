@@ -100,7 +100,7 @@ export default function Header() {
         </button>
         {/* Mobile menu overlay */}
         <div
-          className={`fixed top-0 right-0 h-full bg-white shadow-lg z-40 transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden ${window.innerWidth < 425 ? 'w-full' : 'w-64'}`}
+          className={`fixed top-0 right-0 h-full w-full md:w-64 bg-white shadow-lg z-40 transform transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`}
         >
           <nav className="flex flex-col mt-24 gap-2 px-8">
             {MOBILE_MENUS.map(item => (
