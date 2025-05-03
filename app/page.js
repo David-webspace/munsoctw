@@ -21,7 +21,7 @@ function Banner (){
       <div className="absolute inset-0 opacity-20 bg-[url('/events/spring-gala.jpg')] bg-cover bg-center pointer-events-none" />
       <div className="relative z-10 text-center">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-white drop-shadow mb-3">Welcome to MUN Society Taiwan</h2>
-        <p className="text-lg sm:text-2xl text-blue-100 font-medium drop-shadow">Not in the UN. MUNing anyways.s</p>
+        <p className="text-lg sm:text-2xl text-blue-100 font-medium drop-shadow">Not in the UN. MUNing anyway.</p>
       </div>
     </section>
   );

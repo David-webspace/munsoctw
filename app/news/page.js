@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function NewsPage() {
   return (
-    <main className="max-w-4xl mx-auto p-8">
+    <main className="max-w-5xl mx-auto p-8">
       <h1 className="text-3xl font-bold text-blue-800 mb-8">News</h1>
       <div className="grid gap-8 sm:grid-cols-2">
         {news.map(item => (

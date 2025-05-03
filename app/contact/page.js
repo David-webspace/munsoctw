@@ -1,6 +1,6 @@
 export default function ContactPage() {
   return (
-    <main className="max-w-2xl mx-auto p-6">
+    <main className="max-w-5xl mx-auto p-6">
       <div className="relative bg-gradient-to-r from-blue-600 to-blue-300 rounded-2xl shadow-lg p-8 mb-8 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('/events/spring-gala.jpg')] bg-cover bg-center pointer-events-none" />
         <div className="relative z-10 text-center">
